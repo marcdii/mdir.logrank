@@ -79,3 +79,52 @@ summary.mdirone <- function (object, ...) {
   print(x)
    }
 }
+
+#' @export
+plot.mdirone <- function (x,...) {
+  plotting <- x$plotting
+  requireNamespace("survival", quietly = TRUE)
+
+  if (!("package:survival" %in% search())) {
+    attachNamespace("survival")
+  }
+  requireNamespace("survminer", quietly = TRUE)
+
+  if (!("package:survminer" %in% search())) {
+    attachNamespace("survminer")
+  }
+
+
+  fit <- survival::survfit(Surv(time,status) ~ group, data = plotting)
+
+  plot_1 <- survminer::ggsurvplot(fit, data = plotting, fun = "pct",
+                                  censor = FALSE,
+                                  #ggtheme = theme_bw(),
+                                  pval = FALSE)
+  return(plot_1)
+
+}
+#' @export
+plot.mdirLR <- function (x,...) {
+  plotting <- x$plotting
+  requireNamespace("survival", quietly = TRUE)
+
+  if (!("package:survival" %in% search())) {
+    attachNamespace("survival")
+  }
+  requireNamespace("survminer", quietly = TRUE)
+
+  if (!("package:survminer" %in% search())) {
+    attachNamespace("survminer")
+  }
+
+
+  fit <- survival::survfit(Surv(time,status) ~ group, data = plotting)
+
+  plot_1 <- survminer::ggsurvplot(fit, data = plotting, fun = "pct",
+                                  censor = FALSE,
+                                  #ggtheme = theme_bw(),
+                                  pval = FALSE)
+  return(plot_1)
+
+}
