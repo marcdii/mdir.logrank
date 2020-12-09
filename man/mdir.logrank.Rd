@@ -4,8 +4,14 @@
 \alias{mdir.logrank}
 \title{Two-sample multiple-direction log rank test}
 \usage{
-mdir.logrank(data, cross = TRUE, rg = list(c(0, 0)), nperm = 10000,
-  dig_p = 3, dig_stat = 3)
+mdir.logrank(
+  data,
+  cross = TRUE,
+  rg = list(c(0, 0)),
+  nperm = 10000,
+  dig_p = 3,
+  dig_stat = 3
+)
 }
 \arguments{
 \item{data}{A data.frame, list or environment containing the variables \code{time},
