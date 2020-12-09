@@ -63,6 +63,7 @@ mdir.logrank <- function(data, cross = TRUE, rg = list( c(0,0) ), nperm = 10000,
     stop("The data does not contain all three variables group, event, time.")
   }
   data <- data.frame( time = data$time, status = data$event, group = data$group)
+  data_plot <- data
 
   # breaking ties
   dist <- runif(length(data$time))*10^-5
@@ -131,7 +132,7 @@ mdir.logrank <- function(data, cross = TRUE, rg = list( c(0,0) ), nperm = 10000,
   # Output --------------------------------------------------------------------------
   p_value <- list( Approx = p_value_chi2, Perm = p_value_perm)
   dir <- list( rg = rg, cross = cross, indep = indep)
-  output <- list( stat = round(stat, digits = dig_stat), p_value = p_value, rg = rg, cross = cross, indep = indep, nperm = nperm)
+  output <- list( stat = round(stat, digits = dig_stat), p_value = p_value, rg = rg, cross = cross, indep = indep, nperm = nperm, plotting = data_plot)
   class(output) <- "mdirLR"
   return(output)
 }

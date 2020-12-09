@@ -73,12 +73,17 @@ mdir.onesided <- function(data, group1, rg = list( c(0, 0), c(0, 4), c(4, 0) ), 
   if( sum(c("time","group","event") %in% names(data)) != 3){
     stop("The data does not contain all three variables group, event, time.")
   }
+
+  data_plot <- data.frame( time = data$time, status = data$event, group = data$group)
+
   # breaking ties
   dist <- runif(length(data$time))*10^(-5)
   data$time <- data$time + dist
   ordering <- order(data$time)
 
   data <- data.frame( time = data$time[ordering], status = data$event[ordering], group = data$group[ordering])
+
+
 
   data$group <- unlist( lapply( data$group, function(x){ paste0(x)}))
   group1_p <- paste0(group1)
@@ -165,7 +170,7 @@ mdir.onesided <- function(data, group1, rg = list( c(0, 0), c(0, 4), c(4, 0) ), 
 
   # Output --------------------------------------------------------------------------
   dir <- list( rg = rg, indep = indep)
-  output <- list( stat = round(stat, digits = dig_stat), wild = wild, group1 = group1, p_value = p_value, rg = rg, w.user = w.user, indep = indep, iter = iter)
+  output <- list( stat = round(stat, digits = dig_stat), wild = wild, group1 = group1, p_value = p_value, rg = rg, w.user = w.user, indep = indep, iter = iter, plotting = data_plot)
   class(output) <- "mdirone"
   return(output)
 }
