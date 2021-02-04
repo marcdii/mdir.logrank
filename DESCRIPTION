@@ -15,7 +15,7 @@ Description: Implemented are the one-sided and two-sided
    one p-value based on a chi-squared approximation and 
    a second p-values based on a permutation approach are calculated.
  Ditzhaus, M. and Friedrich, S. (2018) <arXiv:1807.05504>.
-Ditzhaus, M. and Pauly, M. (2018) <arXiv:1808.05627>.
+Ditzhaus, M. and Pauly, M. (2018) <arXiv: 1808.05627>.
 License: GPL-2 | GPL-3
 Imports: 
   stats,
@@ -25,4 +25,4 @@ BugReports: http://github.com/marcdii/mdir.logrank/issues
 Suggests: 
   RGtk2 (>= 2.20.34),
   coin
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.1
